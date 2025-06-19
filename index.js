@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const app = express();
 const snapsave = require('./snapsave-downloader');
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World!' });
@@ -26,5 +27,5 @@ app.get('/igdl', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at ${port}`);
 });
